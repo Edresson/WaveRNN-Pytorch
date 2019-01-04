@@ -48,8 +48,21 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
     # check wav_file
     assert len(wav_files) != 0 or wav_files[0][-4:] == '.wav', "no wav files found!"
     # create training and testing splits
-    test_wav_files = wav_files[:4]
-    wav_files = wav_files[4:]
+    test_wav_files = []
+    train_wav_files = []
+    
+    #phonetically balanced setences for TTS-Portuguese dataset.
+    for file_name in wav_files:
+        if int(file_name.split('-')[1].replace('.wav','')) >= 5655 and int(file_name.split('-')[1].replace('.wav',''))<=5674:
+            print(file_name)
+            test_wav_files.append(file_name)
+        else:
+            train_wav_files.append(file_name)
+            
+        
+    
+    
+    wav_files = train_wav_files
     for i, wav_file in enumerate(tqdm(wav_files)):
         # get the file id
         file_id = '{:d}'.format(i).zfill(5)

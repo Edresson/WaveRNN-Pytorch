@@ -20,22 +20,21 @@ class hparams:
     bits = 10
     # for mu-law
     mulaw_quantize_channels = 512
-    # note: r9r9's deepvoice3 preprocessing is used instead of Fatcord's original.
+    # note: DCTTS preprocessing is used instead of Fatcord's original.
     #--------------     
     # audio processing parameters
-    num_mels = 80
-    fmin = 125
-    fmax = 7600
-    fft_size = 1024
-    hop_size = 256
-    win_length = 1024
     sample_rate = 22050
     preemphasis = 0.97
-    min_level_db = -100
-    ref_level_db = 20
-    rescaling = False
-    rescaling_max = 0.999
-    allow_clipping_in_normalization = True
+    n_fft = 2048
+    frame_shift = 0.0125  # seconds
+    frame_length = 0.05  # seconds
+    hop_length = int(sr * frame_shift)  # samples. =276.
+    hop_size = hop_length 
+    win_length = int(sr * frame_length)  # samples. =1102.
+    n_mels = 80  # Number of Mel banks to generate
+    num_mels = n_mels
+    max_db = 100
+    ref_db = 20
     #----------------
     #
     #----------------
