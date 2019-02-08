@@ -24,6 +24,7 @@ class hparams:
     #--------------     
     # audio processing parameters
     sample_rate = 22050
+    sample_rate
     preemphasis = 0.97
     n_fft = 2048
     frame_shift = 0.0125  # seconds
