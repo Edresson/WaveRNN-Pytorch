@@ -64,14 +64,17 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
     
     wav_files = train_wav_files
     for i, wav_file in enumerate(tqdm(wav_files)):
-        # get the file id
-        file_id = '{:d}'.format(i).zfill(5)
-        wav, mel = get_wav_mel(os.path.join(wav_dir,wav_file))
-        # save
-        np.save(os.path.join(mel_path,file_id+".npy"), mel)
-        np.save(os.path.join(wav_path,file_id+".npy"), wav)
-        # add to dataset_ids
-        dataset_ids.append(file_id)
+        try:
+            # get the file id
+            file_id = '{:d}'.format(i).zfill(5)
+            wav, mel = get_wav_mel(os.path.join(wav_dir,wav_file))
+            # save
+            np.save(os.path.join(mel_path,file_id+".npy"), mel)
+            np.save(os.path.join(wav_path,file_id+".npy"), wav)
+            # add to dataset_ids
+            dataset_ids.append(file_id)
+        except:
+            continue
 
     # save dataset_ids
     with open(os.path.join(output_path,'dataset_ids.pkl'), 'wb') as f:
