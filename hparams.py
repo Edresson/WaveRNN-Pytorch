@@ -38,7 +38,7 @@ class hparams:
     rescaling_max = 0.999
     allow_clipping_in_normalization = True
 
-    preemphasis = 0.97
+    '''preemphasis = 0.97
     n_fft = 2048
     frame_shift = 0.0125  # seconds
     frame_length = 0.05  # seconds
@@ -48,7 +48,7 @@ class hparams:
     n_mels = 80  # Number of Mel banks to generate
     num_mels = n_mels
     max_db = 100
-    ref_db = 20
+    ref_db = 20'''
     #----------------
     #
     #----------------
