@@ -24,7 +24,7 @@ class hparams:
     #--------------     
     # audio processing parameters
     sample_rate = 22050
-    '''num_mels = 80
+    num_mels = 80
     fmin = 125
     fmax = 7600
     fft_size = 1024
@@ -36,7 +36,7 @@ class hparams:
     ref_level_db = 20
     rescaling = False
     rescaling_max = 0.999
-    allow_clipping_in_normalization = True'''
+    allow_clipping_in_normalization = True
 
     preemphasis = 0.97
     n_fft = 2048
