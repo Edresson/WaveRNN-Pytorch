@@ -26,7 +26,7 @@ class hparams:
     sample_rate = 22050
 
     
-    num_mels = 80
+    '''num_mels = 80
     fmin = 125
     fmax = 7600
     fft_size = 1024
@@ -40,7 +40,8 @@ class hparams:
     rescaling_max = 0.999
     allow_clipping_in_normalization = True
 
-    '''preemphasis = 0.97
+    '''
+    preemphasis = 0.97
     n_fft = 2048
     frame_shift = 0.0125  # seconds
     frame_length = 0.05  # seconds
@@ -51,7 +52,7 @@ class hparams:
     num_mels = n_mels
     max_db = 100
     ref_db = 20
-    r=4'''
+    r=4
     #----------------
     #
     #----------------
