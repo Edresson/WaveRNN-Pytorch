@@ -24,6 +24,8 @@ class hparams:
     #--------------     
     # audio processing parameters
     sample_rate = 22050
+
+    
     num_mels = 80
     fmin = 125
     fmax = 7600
@@ -48,7 +50,8 @@ class hparams:
     n_mels = 80  # Number of Mel banks to generate
     num_mels = n_mels
     max_db = 100
-    ref_db = 20'''
+    ref_db = 20
+    r=4'''
     #----------------
     #
     #----------------
@@ -58,7 +61,9 @@ class hparams:
     pad = 2
     # note upsample factors must multiply out to be equal to hop_size, so adjust
     # if necessary (i.e 4 x 4 x 16 = 256)
-    upsample_factors = (4, 4, 16)
+    #upsample_factors = (4, 4, 16)
+    #new
+    upsample_factors = (3, 4, 23)  # if necessary (i.e 3 x 4 x 23 = 276)
     compute_dims = 128
     res_out_dims = 128
     res_blocks = 10

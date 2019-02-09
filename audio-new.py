@@ -47,10 +47,19 @@ def melspectrogram(y):
     # normalize
     mel = np.clip((mel - hp.ref_db + hp.max_db) / hp.max_db, 1e-8, 1)
 
+
     # Transpose
     mel = mel.astype(np.float32)  # ( n_mels,T)
-
-
+    '''
+    mel = mel.T.astype(np.float32)  # ( n_mels,T)
+    # Marginal padding for reduction shape sync.
+    num_paddings = hp.r - (t % hp.r) if t % hp.r != 0 else 0
+    mel = np.pad(mel, [[0, num_paddings], [0, 0]], mode="constant")
+     # Reduction
+    mel = mel[::hp.r, :]
+     mel = mel.T  #
+    '''
+    
     return mel
 
 # Fatcord's preprocessing
