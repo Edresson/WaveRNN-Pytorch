@@ -64,7 +64,7 @@ class hparams:
     # if necessary (i.e 4 x 4 x 16 = 256)
     #upsample_factors = (4, 4, 16)
     #new
-    upsample_factors = (3, 4, 23)  # if necessary (i.e 3 x 4 x 23 = 276)
+    upsample_factors = (3, 4, 22)  # if necessary (i.e 3 x 4 x 23 = 276)
     compute_dims = 128
     res_out_dims = 128
     res_blocks = 10
