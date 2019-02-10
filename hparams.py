@@ -43,12 +43,12 @@ class hparams:
     '''
     preemphasis = 0.97
     n_fft = 2048
-    frame_shift = 0.0125  # seconds
-    frame_length = 0.05  # seconds
-    hop_length = 256#int(sample_rate * frame_shift)  # samples. =276.
+    frame_shift = 0.011609 # seconds
+    frame_length = 0.04643  # seconds
+    hop_length = int(sample_rate * frame_shift)  # samples. =256.
     hop_size = hop_length 
-    win_length  = 1024
-    #win_length = int(sample_rate * frame_length)  # samples. =1102.
+    #win_length  = 1024
+    win_length = int(sample_rate * frame_length)  # samples. =1024.
     n_mels = 80  # Number of Mel banks to generate
     num_mels = n_mels
     max_db = 100
