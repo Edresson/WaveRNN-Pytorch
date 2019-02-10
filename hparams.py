@@ -73,7 +73,7 @@ class hparams:
     #
     #----------------
     # training parameters
-    batch_size = 130
+    batch_size = 150
     nepochs = 15000
     save_every_step = 10000
     evaluate_every_step = 5000
