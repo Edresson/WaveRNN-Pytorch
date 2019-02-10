@@ -66,7 +66,7 @@ class UpsampleNetwork(nn.Module) :
         self.resnet_stretch = Stretch2d(total_scale, 1)
         self.up_layers = nn.ModuleList()
         for scale in upsample_scales :
-            k_size = (1, scale * 2 + 1)
+            k_size = (1, scale * 2 + 1+5)
             padding = (0, scale)
             stretch = Stretch2d(scale, 1)
             conv = nn.Conv2d(1, 1, kernel_size=k_size, padding=padding, bias=False)
