@@ -60,7 +60,7 @@ class UpsampleNetwork(nn.Module) :
     def __init__(self, feat_dims, upsample_scales, compute_dims, 
                  res_blocks, res_out_dims, pad) :
         super().__init__()
-        total_scale = np.cumproduct(upsample_scales)[-1]+5
+        total_scale = np.cumproduct(upsample_scales)[-1]-2
         self.indent = pad * total_scale
         self.resnet = MelResNet(res_blocks, feat_dims, compute_dims, res_out_dims)
         self.resnet_stretch = Stretch2d(total_scale, 1)
