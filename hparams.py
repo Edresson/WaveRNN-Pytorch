@@ -53,7 +53,7 @@ class hparams:
     num_mels = n_mels
     max_db = 100
     ref_db = 20
-    r=4
+    r=1 # reduction factor 1 for not use
     #----------------
     #
     #----------------
