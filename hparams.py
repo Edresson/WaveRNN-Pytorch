@@ -1,6 +1,6 @@
 
 
-class hparams:
+class hparams_raw:
 
     # option parameters
 
@@ -22,22 +22,23 @@ class hparams:
     bits = 10
     # for mu-law
     mulaw_quantize_channels = 512
-    # note: r9r9's deepvoice3 preprocessing is used instead of Fatcord's original.
+    # note: DCTTS preprocessing is used instead of Fatcord's original.
     #--------------     
     # audio processing parameters
-    num_mels = 80
-    fmin = 125
-    fmax = 7600
-    fft_size = 1024
-    hop_size = 256
-    win_length = 1024
     sample_rate = 22050
     preemphasis = 0.97
-    min_level_db = -100
-    ref_level_db = 20
-    rescaling = False
-    rescaling_max = 0.999
-    allow_clipping_in_normalization = True
+    n_fft = 2048
+    frame_shift = 0.011609 # seconds
+    frame_length = 0.04643  # seconds
+    hop_length = 256 #int(sample_rate * frame_shift)  # samples. =256.
+    hop_size = hop_length 
+    #win_length  = 1024
+    win_length = 1024#int(sample_rate * frame_length)  # samples. =1024.
+    n_mels = 80  # Number of Mel banks to generate
+    num_mels = n_mels
+    max_db = 100
+    ref_db = 20
+    r=1 # reduction factor 1 for not use
     #----------------
     #
     #----------------
@@ -80,10 +81,8 @@ class hparams:
     fix_learning_rate = None # modify if one wants to use a fixed learning rate, else set to None to use noam learning rate
     #-----------------
     
-class hparams_bits:
-
+class hparams:
     # option parameters
-
     # Input type:
     # 1. raw [-1, 1]
     # 2. mixture [-1, 1]
@@ -102,7 +101,7 @@ class hparams_bits:
     bits = 10
     # for mu-law
     mulaw_quantize_channels = 512
-     # note: DCTTS preprocessing is used instead of Fatcord's original.
+    # note: DCTTS preprocessing is used instead of Fatcord's original.
     #--------------     
     # audio processing parameters
     sample_rate = 22050
@@ -136,7 +135,7 @@ class hparams_bits:
     #
     #----------------
     # training parameters
-    batch_size = 64
+    batch_size = 32
     nepochs = 5000
     save_every_step = 10000
     evaluate_every_step = 5000
@@ -160,5 +159,6 @@ class hparams_bits:
     weight_decay = 0.0
     fix_learning_rate = 5e-6 # modify if one wants to use a fixed learning rate, else set to None to use noam learning rate
     #-----------------
+
 
 
