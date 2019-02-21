@@ -8,6 +8,8 @@ class hparams:
     # 3. bits [0, 512]
     # 4. mulaw[0, mulaw_quantize_channels]
     #
+    input_type = 'bits'
+
     # distribution type, currently supports only 'beta' and 'mixture'
     distribution = 'gaussian' # or "mixture"
     log_scale_min = -32.23619130191664 # = float(np.log(1e-7))
