@@ -115,7 +115,7 @@ class hparams:
     #
     # for Fatcord's original 9 bit audio, specify the audio bit rate. Note this corresponds to network output
     # of size 2**bits, so 9 bits would be 512 output, etc.
-    bits = 10
+    bits = 9
     # for mu-law
     mulaw_quantize_channels = 512
      # note: DCTTS preprocessing is used instead of Fatcord's original.
