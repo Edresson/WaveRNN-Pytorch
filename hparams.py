@@ -8,8 +8,6 @@ class hparams:
     # 3. bits [0, 512]
     # 4. mulaw[0, mulaw_quantize_channels]
     #
-    input_type = 'bits'
-    #
     # distribution type, currently supports only 'beta' and 'mixture'
     distribution = 'gaussian' # or "mixture"
     log_scale_min = -32.23619130191664 # = float(np.log(1e-7))
@@ -57,15 +55,12 @@ class hparams:
     #----------------
     #
     #----------------
-    # model parameters
-    rnn_dims = 600
+    rnn_dims = 800
     fc_dims = 512
     pad = 2
     # note upsample factors must multiply out to be equal to hop_size, so adjust
     # if necessary (i.e 4 x 4 x 16 = 256)
     upsample_factors = (4, 4, 16)
-    #new
-    #upsample_factors = (3, 4, 23)  # if necessary (i.e 3 x 4 x 23 = 276)
     compute_dims = 128
     res_out_dims = 128
     res_blocks = 10
@@ -73,8 +68,8 @@ class hparams:
     #
     #----------------
     # training parameters
-    batch_size = 64
-    nepochs = 100000
+    batch_size = 32
+    nepochs = 5000
     save_every_step = 10000
     evaluate_every_step = 5000
     # seq_len_factor can be adjusted to increase training sequence length (will increase GPU usage)
@@ -82,7 +77,7 @@ class hparams:
     seq_len = seq_len_factor * hop_size
     grad_norm = 10
     #learning rate parameters
-    initial_learning_rate=1e-3
+    initial_learning_rate=1e-4
     lr_schedule_type = 'step' # or 'noam'
     # for noam learning rate schedule
     noam_warm_up_steps = 2000 * (batch_size // 16)
@@ -95,5 +90,4 @@ class hparams:
     adam_eps=1e-8
     amsgrad=False
     weight_decay = 0.0
-    fix_learning_rate = None # modify if one wants to use a fixed learning rate, else set to None to use noam learning rate
-    #-----------------
+    fix_learning_rate = 5e-6 # modify if one wants to use a fixed learning rate, else set to None to use noam learning rate
