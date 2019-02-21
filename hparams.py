@@ -1,6 +1,6 @@
 
 
-class hparams_raw:
+class hparams:
 
     # option parameters
 
@@ -43,7 +43,7 @@ class hparams_raw:
     #
     #----------------
     # model parameters
-    rnn_dims = 600
+    rnn_dims = 800
     fc_dims = 512
     pad = 2
     # note upsample factors must multiply out to be equal to hop_size, so adjust
@@ -81,7 +81,7 @@ class hparams_raw:
     fix_learning_rate = None # modify if one wants to use a fixed learning rate, else set to None to use noam learning rate
     #-----------------
     
-class hparams:
+class hparams_bits:
     # option parameters
     # Input type:
     # 1. raw [-1, 1]
