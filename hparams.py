@@ -43,6 +43,7 @@ class hparams:
     #
     #----------------
     # model parameters
+    dropout = 0.1
     rnn_dims = 600
     fc_dims = 512
     pad = 2
