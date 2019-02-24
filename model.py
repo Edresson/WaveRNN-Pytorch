@@ -128,6 +128,7 @@ class Model(nn.Module) :
         x = self.I(x)
         res = x
         x, _ = self.rnn1(x, h1)
+        x=x.to('cuda')
         x=LayerNorm(list(x.size()))(x)
         
         x = x + res
