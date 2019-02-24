@@ -104,12 +104,12 @@ class Model(nn.Module) :
         self.aux_dims = res_out_dims // 4
         self.upsample = UpsampleNetwork(feat_dims, upsample_factors, compute_dims, 
                                         res_blocks, res_out_dims, pad)
-        self.I = nn.Linear(feat_dims + self.aux_dims + 1, rnn_dims,dropout=hp.dropout)
+        self.I = nn.Linear(feat_dims + self.aux_dims + 1, rnn_dims)
         self.rnn1 = nn.GRU(rnn_dims, rnn_dims, batch_first=True,dropout=hp.dropout)
         self.rnn2 = nn.GRU(rnn_dims + self.aux_dims, rnn_dims, batch_first=True,dropout=hp.dropout)
-        self.fc1 = nn.Linear(rnn_dims + self.aux_dims, fc_dims,dropout=hp.dropout)
-        self.fc2 = nn.Linear(fc_dims + self.aux_dims, fc_dims,dropout=hp.dropout)
-        self.fc3 = nn.Linear(fc_dims, self.n_classes,dropout=hp.dropout)
+        self.fc1 = nn.Linear(rnn_dims + self.aux_dims, fc_dims)
+        self.fc2 = nn.Linear(fc_dims + self.aux_dims, fc_dims)
+        self.fc3 = nn.Linear(fc_dims, self.n_classes)
         num_params(self)
     
     def forward(self, x, mels) :
