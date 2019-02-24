@@ -1,6 +1,7 @@
 import torch
 from torch import nn
 import torch.nn.functional as F
+from torch.nn.modules.normalization  import LayerNorm
 from hparams import hparams as hp
 from torch.utils.data import DataLoader, Dataset
 from distributions import *
@@ -127,19 +128,23 @@ class Model(nn.Module) :
         x = self.I(x)
         res = x
         x, _ = self.rnn1(x, h1)
+        x=LayerNorm(x)
         
         x = x + res
         res = x
         x = torch.cat([x, a2], dim=2)
         x, _ = self.rnn2(x, h2)
+        x=LayerNorm(x)
         
         x = x + res
         x = torch.cat([x, a3], dim=2)
         x = F.relu(self.fc1(x))
-        
+        x=LayerNorm(x)
+
         x = torch.cat([x, a4], dim=2)
         x = F.relu(self.fc2(x))
-
+        x=LayerNorm(x)
+        
         x = self.fc3(x)
 
         if hp.input_type == 'raw':
