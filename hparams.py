@@ -43,7 +43,7 @@ class hparams:
     #
     #----------------
     # model parameters
-    rnn_dims = 800
+    rnn_dims = 600
     fc_dims = 512
     pad = 2
     # note upsample factors must multiply out to be equal to hop_size, so adjust
