@@ -25,7 +25,7 @@ class hparams:
     # note: DCTTS preprocessing is used instead of Fatcord's original.
     #--------------     
     # audio processing parameters
-    sample_rate = 22050
+    sample_rate = 48000#22050
     preemphasis = 0.97
     n_fft = 2048
     frame_shift = 0.011609 # seconds
