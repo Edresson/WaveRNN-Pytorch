@@ -114,7 +114,7 @@ def evaluate_model(model, data_loader, checkpoint_dir, limit_eval_to=5):
             # clear fig to drawing to the same plot
             plt.clf()
             counter += 1
-        # stop evaluation early via limit_eval_to
+        # stop uation early via limit_eval_to
         if counter >= limit_eval_to:
             break
 
