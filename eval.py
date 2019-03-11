@@ -27,7 +27,7 @@ def evaluate_model(model):
     """
     
     output_dir = '../eval/'
-    mel = np.load('sample-0.npy')
+    mel = np.load('00100.npy')
     wav = model.generate(mel)
     # save wav
     wav_path = os.path.join(output_dir,"sample-0.wav")
@@ -37,5 +37,5 @@ def evaluate_model(model):
 # build model
 model = build_model().to(device)
 
-model = load_checkpoint("checkpoints/", model)
+model = load_checkpoint("checkpoints/checkpoint_step000340000.pth", model)
 evaluate_model(model)
