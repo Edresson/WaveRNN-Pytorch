@@ -4,6 +4,7 @@ from torch import optim
 from hparams import hparams as hp
 import torch
 import numpy as np
+import  librosa
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if use_cuda else "cpu")
 def _load(checkpoint_path):
