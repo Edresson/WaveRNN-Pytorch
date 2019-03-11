@@ -2,9 +2,9 @@ import os
 from model import build_model
 from torch import optim
 from hparams import hparams as hp
-
+import torch
 use_cuda = torch.cuda.is_available()
-
+device = torch.device("cuda" if use_cuda else "cpu")
 def _load(checkpoint_path):
     if use_cuda:
         checkpoint = torch.load(checkpoint_path)
@@ -37,5 +37,5 @@ def evaluate_model(model):
 # build model
 model = build_model().to(device)
 
-model = load_checkpoint("checkpoint_step000340000.pth", model)
+model = load_checkpoint("checkpoints/", model)
 evaluate_model(model)
