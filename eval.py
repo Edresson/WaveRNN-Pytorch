@@ -28,11 +28,10 @@ def evaluate_model(model):
 
     """
     
-    output_dir = '../eval/'
     mel = np.load('00100.npy')
     wav = model.generate(mel)
     # save wav
-    wav_path = os.path.join(output_dir,"sample-0.wav")
+    wav_path = "sample-0.wav"
     librosa.output.write_wav(wav_path, wav, sr=hp.sample_rate)
         
 
