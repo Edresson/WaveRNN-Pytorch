@@ -52,6 +52,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
     lines = codecs.open(transcript, 'r', 'utf-8').readlines()
     for i in range(len(lines)):
         line = lines[i]
+        print(line)
         fname,text = line.strip().split("==")
         file_id = '{:d}'.format(i).zfill(5)
         file_name = os.path.basename(fname)

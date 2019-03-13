@@ -117,7 +117,7 @@ if __name__=="__main__":
     lines = codecs.open(transcript, 'r', 'utf-8').readlines()
     for i in range(lines):
         line = lines[i]
-        print(line)
+        
         fname,text = line.strip().split("==")
         file_id = '{:d}'.format(i).zfill(5)
         file_name = os.path.basename(fname)
