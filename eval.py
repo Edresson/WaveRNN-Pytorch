@@ -27,16 +27,24 @@ def evaluate_model(model):
     """evaluate model and save generated wav
 
     """
-    
-    mel = np.load('00100.npy')
+    test_files = os.listdir('data_dir/test/')
+    for f in test_files:
+        if f[-7:] == "mel.npy":
+            mel = np.load(os.path.join(test_path,f))
+            wav = model.generate(mel)
+            # save wav
+            wav_path = os.path.join('eval/',f+".wav")
+            librosa.output.write_wav(wav_path, wav, sr=hp.sample_rate)
+            
+    '''mel = np.load('00100.npy')
     wav = model.generate(mel)
     # save wav
-    wav_path = "sample-0.wav"
-    librosa.output.write_wav(wav_path, wav, sr=hp.sample_rate)
+    wav_path = "eval/sample-0.wav"
+    librosa.output.write_wav(wav_path, wav, sr=hp.sample_rate)'''
         
 
 # build model
 model = build_model().to(device)
 
-model = load_checkpoint("checkpoints/checkpoint_step000340000.pth", model)
+model = load_checkpoint("checkpoints/checkpoint_step000340010.pth", model)
 evaluate_model(model)
