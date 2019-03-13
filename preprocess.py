@@ -55,6 +55,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
         fname,text = line.strip().split("==")
         file_id = '{:d}'.format(i).zfill(5)
         file_name = os.path.basename(fname)
+        print(file_name)
         if int(file_name.split('-')[1].replace('.wav','')) >= 5655 and int(file_name.split('-')[1].replace('.wav',''))<=5674:
             test_wav_files.append(file_name)
         else:
