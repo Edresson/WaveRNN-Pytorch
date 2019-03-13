@@ -46,5 +46,5 @@ def evaluate_model(model):
 # build model
 model = build_model().to(device)
 
-model = load_checkpoint("checkpoints/checkpoint_step000340010.pth", model)
+model = load_checkpoint("checkpoints/checkpoint_step000340020.pth", model)
 evaluate_model(model)
