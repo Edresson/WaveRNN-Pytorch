@@ -101,7 +101,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
 
 if __name__=="__main__":
     args = docopt(__doc__)
-    wav_dir = args["<data-dir>"]
+    wav_dir = args["<wav-dir>"]
     output_dir = args["--output-dir"]
 
     # create paths
