@@ -92,10 +92,8 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
     test_path = os.path.join(output_path,'test')
     os.makedirs(test_path, exist_ok=True)
     for i, wav_file in enumerate(test_wav_files):
-        try:
-            wav, mel = get_wav_mel(os.path.join(wav_dir,wav_file))
-        except:
-            continue
+        wav, mel = get_wav_mel(os.path.join(wav_dir,wav_file))
+        
         # save test_wavs
         np.save(os.path.join(test_path,"test_{}_mel.npy".format(i)),mel)
         np.save(os.path.join(test_path,"test_{}_wav.npy".format(i)),wav)
