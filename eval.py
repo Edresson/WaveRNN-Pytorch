@@ -27,7 +27,8 @@ def evaluate_model(model):
     """evaluate model and save generated wav
 
     """
-    test_files = os.listdir('data_dir/test/')
+    test_path = 'data_dir/test/'
+    test_files = os.listdir(test_path)
     for f in test_files:
         if f[-7:] == "mel.npy":
             mel = np.load(os.path.join(test_path,f))
