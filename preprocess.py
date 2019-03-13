@@ -59,9 +59,9 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
         file_name = os.path.basename(fname)
         print(file_name)
         if int(file_name.split('-')[1].replace('.wav','')) >= 5655 and int(file_name.split('-')[1].replace('.wav',''))<=5674:
-            test_wav_files.append(file_name)
+            test_wav_files.append(fname)
         else:
-            train_wav_files.append(file_name)
+            train_wav_files.append(fname)
             
     
     wav_files = train_wav_files
@@ -92,8 +92,10 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
     test_path = os.path.join(output_path,'test')
     os.makedirs(test_path, exist_ok=True)
     for i, wav_file in enumerate(test_wav_files):
-        wav, mel = get_wav_mel(os.path.join(wav_dir,wav_file))
-        
+        try:
+            wav, mel = get_wav_mel(os.path.join(wav_dir,wav_file))
+        except:
+                    continue
         # save test_wavs
         np.save(os.path.join(test_path,"test_{}_mel.npy".format(i)),mel)
         np.save(os.path.join(test_path,"test_{}_wav.npy".format(i)),wav)
