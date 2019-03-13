@@ -16,6 +16,7 @@ from hparams import hparams as hp
 from utils import *
 from tqdm import tqdm
 import librosa
+import codecs
 
 def get_wav_mel(path):
     """Given path to .wav file, get the quantized wav and mel spectrogram as numpy vectors
