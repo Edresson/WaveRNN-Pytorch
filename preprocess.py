@@ -43,25 +43,23 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
     given wav directory and output directory, process wav files and save quantized wav and mel
     spectrogram to output directory
     """
-    dataset_ids = []
-    print(wav_dir)
-    # get list of wav files
-    wav_files = os.listdir(wav_dir)
-    # check wav_file
-    assert len(wav_files) != 0 or wav_files[0][-4:] == '.wav', "no wav files found!"
     # create training and testing splits
     test_wav_files = []
     train_wav_files = []
-    
-    #phonetically balanced setences for TTS-Portuguese dataset.
-    for file_name in wav_files:
+    dataset_ids = []
+    print(wav_dir)
+    transcript = os.path.join(wav_dir, 'texts.csv')
+    lines = codecs.open(transcript, 'r', 'utf-8').readlines()
+    for i in range(len(lines)):
+        line = lines[i]
+        fname,text = line.strip().split("==")
+        file_id = '{:d}'.format(i).zfill(5)
+        file_name = os.path.basename(fname)
         if int(file_name.split('-')[1].replace('.wav','')) >= 5655 and int(file_name.split('-')[1].replace('.wav',''))<=5674:
             test_wav_files.append(file_name)
         else:
             train_wav_files.append(file_name)
             
-        
-    
     
     wav_files = train_wav_files
     for i, wav_file in enumerate(tqdm(wav_files)):
@@ -101,7 +99,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
 
 if __name__=="__main__":
     args = docopt(__doc__)
-    wav_dir = args["<wav-dir>"]
+    wav_dir = args["<data-dir>"]
     output_dir = args["--output-dir"]
 
     # create paths
