@@ -5,7 +5,7 @@ from torch.nn.modules.normalization  import LayerNorm
 from hparams import hparams as hp
 from torch.utils.data import DataLoader, Dataset
 from distributions import *
-from utils import num_params, mulaw_quantize, inv_mulaw_quantize
+from .utils import num_params, mulaw_quantize, inv_mulaw_quantize
 
 from tqdm import tqdm
 import numpy as np
