@@ -70,8 +70,10 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
             if librosa.get_duration(filename=os.path.join(wav_dir,wav_file)) > 0.67:
                 # get the file id
                 file_id = '{:d}'.format(i).zfill(5)
-                
-                wav, mel = get_wav_mel(os.path.join(wav_dir,wav_file))
+                try:
+                    wav, mel = get_wav_mel(os.path.join(wav_dir,wav_file))
+                except:
+                    continue
                 # save
                 np.save(os.path.join(mel_path,file_id+".npy"), mel)
                 np.save(os.path.join(wav_path,file_id+".npy"), wav)
