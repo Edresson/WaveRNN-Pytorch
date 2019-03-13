@@ -92,7 +92,7 @@ def test_save_checkpoint():
     model = load_checkpoint(checkpoint_path+"checkpoint_step000000000.pth", model, optimizer, False)
 
 
-def evaluate_model(model, data_loader, checkpoint_dir, limit_eval_to=5):
+def evaluate_model(model, data_loader, checkpoint_dir, limit_eval_to=21):
     """evaluate model and save generated wav and plot
 
     """
@@ -114,7 +114,7 @@ def evaluate_model(model, data_loader, checkpoint_dir, limit_eval_to=5):
             # clear fig to drawing to the same plot
             plt.clf()
             counter += 1
-        # stop uation early via limit_eval_to
+        # stop evaluation early via limit_eval_to
         if counter >= limit_eval_to:
             break
 

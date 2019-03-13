@@ -55,9 +55,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
     
     #phonetically balanced setences for TTS-Portuguese dataset.
     for file_name in wav_files:
-        print(file_name)
         if int(file_name.split('-')[1].replace('.wav','')) >= 5655 and int(file_name.split('-')[1].replace('.wav',''))<=5674:
-            print(file_name)
             test_wav_files.append(file_name)
         else:
             train_wav_files.append(file_name)
