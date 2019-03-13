@@ -44,6 +44,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
     spectrogram to output directory
     """
     dataset_ids = []
+    print(wav_dir)
     # get list of wav files
     wav_files = os.listdir(wav_dir)
     # check wav_file
