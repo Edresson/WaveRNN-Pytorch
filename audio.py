@@ -5,7 +5,7 @@ import numpy as np
 from scipy import signal
 from hparams import hparams as hp
 from scipy.io import wavfile
-
+from hparams import hparams
 
 def load_wav(path):
     return librosa.load(path, sr=hp.sample_rate)[0]
