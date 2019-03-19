@@ -76,6 +76,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
                     wav, mel = get_wav_mel(os.path.join(wav_dir,wav_file))
                     frames=mel.shape[1]
                     if mel.shape > 840:
+                        print('ignorado')
                         continue
                     # save
                     #np.save(os.path.join(mel_path,file_id+".npy"), mel)
