@@ -82,7 +82,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
                     #np.save(os.path.join(mel_path,file_id+".npy"), mel)
                     mel_ob = np.load(os.path.join('mels_ob',file_id+".npy"))
                     print('antes ',mel_ob.shape,mel.shape,frames)
-                    mels = mel_ob[:][0:frames]
+                    mel_ob = mel_ob.T[:frames].T
                     print(mels.shape,mel.shape)
                     np.save(os.path.join(mel_path,file_id+".npy"), mels)
                     # save
@@ -111,7 +111,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
         try:
             wav, mel = get_wav_mel(os.path.join(wav_dir,wav_file))
             mel_ob = np.load(os.path.join('mels_test',file_id+".npy"))
-            mel_ob = mel_ob[:][:frames]
+            mel_ob = mel_ob.T[:frames].T
             print(mel_ob.shape,mel.shape)
             # save test_wavs
             np.save(os.path.join(test_path,"test_{}_mel.npy".format(i)),mel_ob)
