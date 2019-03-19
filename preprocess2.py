@@ -82,9 +82,9 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
                     #np.save(os.path.join(mel_path,file_id+".npy"), mel)
                     mel_ob = np.load(os.path.join('mels_ob',file_id+".npy"))
                     print('antes ',mel_ob.shape,mel.shape,frames)
-                    mel_ob = mel_ob[:][:frames]
-                    print(mel_ob.shape,mel.shape)
-                    np.save(os.path.join(mel_path,file_id+".npy"), mel_ob)
+                    mels = mel_ob[:][0:frames]
+                    print(mels.shape,mel.shape)
+                    np.save(os.path.join(mel_path,file_id+".npy"), mels)
                     # save
                     #np.save(os.path.join(mel_path,file_id+".npy"), mel)
                     np.save(os.path.join(wav_path,file_id+".npy"), wav)
