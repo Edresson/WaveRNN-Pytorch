@@ -59,7 +59,7 @@ class hparams:
     # training parameters
     batch_size = 128
     nepochs = 15000
-    save_every_step = 100
+    save_every_step = 100 #10000
     evaluate_every_step = 10
     # seq_len_factor can be adjusted to increase training sequence length (will increase GPU usage)
     seq_len_factor = 5
