@@ -178,7 +178,7 @@ def train_loop(device, model, data_loader, optimizer, checkpoint_dir):
                 global_test_step = False
             global_step += 1
         
-        print("epoch:{}, running loss:{}, average loss:{}, current lr:{}".format(global_epoch, running_loss, avg_loss, current_lr))
+        print("epoch:{}, current lr:{}".format(global_epoch, current_lr))
         global_epoch += 1
 
 
