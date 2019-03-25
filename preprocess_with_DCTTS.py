@@ -67,6 +67,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
     
     wav_files = train_wav_files
     for i, lista in enumerate(tqdm(wav_files)):
+        try:
             wav_file= lista[0]
             file_id = lista[1]
             duration_wav=librosa.get_duration(filename=os.path.join(wav_dir,wav_file))
@@ -84,18 +85,23 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
                     mels = mel_ob
                     if frames == 840:
                         print('tamanho wav com 10 segundos ',wav.shape)
+                        print('tamanho wav com 10 segundos ',wav.shape)
+                        print('tamanho wav com 10 segundos ',wav.shape)
+                        print('tamanho wav com 10 segundos ',wav.shape)
+                        print('tamanho wav com 10 segundos ',wav.shape)
+                        
                     print(mels.shape,mel.shape)
-                    '''silence = AudioSegment.silent(duration=10000-duration_wav*1000)
-                    wav=wav+silence
+                    
                     np.save(os.path.join(mel_path,file_id+".npy"), mels)
                     # save
                     #np.save(os.path.join(mel_path,file_id+".npy"), mel)
                     np.save(os.path.join(wav_path,file_id+".npy"), wav)
-                    dataset_ids.append(file_id)  '''              
+                    dataset_ids.append(file_id)             
             else:
                 continue
     
-
+        except:
+            continue
     # save dataset_ids
     with open(os.path.join(output_path,'dataset_ids.pkl'), 'wb') as f:
         pickle.dump(dataset_ids, f)
