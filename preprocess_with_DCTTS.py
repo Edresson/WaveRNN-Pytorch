@@ -82,14 +82,16 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
                     mel_ob = np.load(os.path.join('mels_ob',file_id+".npy"))
                     print('antes ',mel_ob.shape,mel.shape,frames)
                     mels = mel_ob
+                    if frames == 840:
+                        print('tamanho wav com 10 segundos ',wav.shape)
                     print(mels.shape,mel.shape)
-                    silence = AudioSegment.silent(duration=10000-duration_wav*1000)
+                    '''silence = AudioSegment.silent(duration=10000-duration_wav*1000)
                     wav=wav+silence
                     np.save(os.path.join(mel_path,file_id+".npy"), mels)
                     # save
                     #np.save(os.path.join(mel_path,file_id+".npy"), mel)
                     np.save(os.path.join(wav_path,file_id+".npy"), wav)
-                    dataset_ids.append(file_id)                
+                    dataset_ids.append(file_id)  '''              
             else:
                 continue
     
