@@ -83,7 +83,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
                     print('antes ',mel_ob.shape,mel.shape,frames)
                     mels = mel_ob
                     print(mels.shape,mel.shape)
-                    silence = AudioSegment.silent(duration=10-duration_wav*1000)
+                    silence = AudioSegment.silent(duration=10000-duration_wav*1000)
                     wav=wav+silence
                     np.save(os.path.join(mel_path,file_id+".npy"), mels)
                     # save
@@ -109,7 +109,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
             wav, mel = get_wav_mel(os.path.join(wav_dir,wav_file))
             mel_ob = np.load(os.path.join('mels_test',file_id+".npy"))
             #mel_ob = mel_ob.T[:frames].T
-            silence = AudioSegment.silent(duration=10-duration_wav*1000)
+            silence = AudioSegment.silent(duration=10000-duration_wav*1000)
             wav=wav+silence
             print(mel_ob.shape,mel.shape)
             # save test_wavs
