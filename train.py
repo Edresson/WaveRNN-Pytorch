@@ -139,9 +139,6 @@ def train_loop(device, model, data_loader, optimizer, checkpoint_dir):
     
 
     global global_step, global_epoch, global_test_step
-    running_loss=0
-    avg_loss=0
-    current_lr=0
     while global_epoch < hp.nepochs:
         running_loss = 0
         for i, (x, m, y) in enumerate(tqdm(data_loader)):
