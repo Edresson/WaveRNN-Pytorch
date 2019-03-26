@@ -116,7 +116,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
             #mel_ob = mel_ob.T[:frames].T
             pad_len = 214988-int(wav.shape[0])
             wav= np.pad(wav, (0,pad_len),'constant')
-            print(mel_ob.shape,mel.shape)
+            print(mel_ob.shape,mel.shape,wav.shape)
             # save test_wavs
             np.save(os.path.join(test_path,"test_{}_mel.npy".format(i)),mel_ob)
             np.save(os.path.join(test_path,"test_{}_wav.npy".format(i)),wav)
