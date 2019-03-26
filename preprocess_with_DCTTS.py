@@ -87,7 +87,7 @@ def process_data(wav_dir, output_path, mel_path, wav_path):
                     pad_len = 214988-int(wav.shape[0])
                     wav= np.pad(wav, (0,pad_len),'constant')
                     #    
-                    print(mels.shape,mel.shape)
+                    print(mels.shape,mel.shape,wav.shape)
                     
                     np.save(os.path.join(mel_path,file_id+".npy"), mels)
                     # save
