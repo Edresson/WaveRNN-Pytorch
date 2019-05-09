@@ -32,10 +32,14 @@ from dataset import raw_collate, discrete_collate, AudiobookDataset
 from hparams import hparams as hp
 from lrschedule import noam_learning_rate_decay, step_learning_rate_decay
 
+from tensorboardX import SummaryWriter
+writer = SummaryWriter()
+
 global_step = 0
 global_epoch = 0
 global_test_step = 0
 use_cuda = torch.cuda.is_available()
+
 
 def save_checkpoint(device, model, optimizer, step, checkpoint_dir, epoch):
     checkpoint_path = join(
@@ -177,7 +181,7 @@ def train_loop(device, model, data_loader, optimizer, checkpoint_dir):
             if global_test_step is True:
                 global_test_step = False
             global_step += 1
-        
+        writer.add_scalar('train/loss', running_loss, hp.nepochs)
         print("epoch:{}, running loss:{}, average loss:{}, current lr:{}".format(global_epoch, running_loss, avg_loss, current_lr))
         global_epoch += 1
 
@@ -239,7 +243,7 @@ if __name__=="__main__":
     finally:
         print("saving model....")
         save_checkpoint(device, model, optimizer, global_step, checkpoint_dir, global_epoch)
-    
+    writer.close()   
 
 def test_eval():
     data_root = "data_dir"
