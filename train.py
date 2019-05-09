@@ -189,7 +189,6 @@ def train_loop(device, model, data_loader, optimizer, checkpoint_dir):
 
             running_loss += loss.item()
             avg_loss = running_loss / (i+1)
-            print(global_step,global_step % hp.save_every_step,hp.save_every_step)
             # saving checkpoint if needed
             if global_step != 0 and global_step % hp.save_every_step == 0:
                 save_checkpoint(device, model, optimizer, global_step, checkpoint_dir, global_epoch)
