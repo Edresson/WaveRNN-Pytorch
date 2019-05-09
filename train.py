@@ -204,7 +204,7 @@ def train_loop(device, model, data_loader, optimizer, checkpoint_dir):
             if global_test_step is True:
                 global_test_step = False
             global_step += 1
-            writer.add_scalar('train/loss', running_loss, len(data_loader))
+            writer.add_scalar('train/loss', running_loss, global_step)
         
         print("epoch:{}, running loss:{}, average loss:{}, current lr:{}".format(global_epoch, running_loss, avg_loss, current_lr))
         print(get_expired_time(start_time))
