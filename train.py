@@ -149,7 +149,7 @@ def train_loop(device, model, data_loader, optimizer, checkpoint_dir):
     """Main training loop.
 
     """
-    time=time.time()
+    start_time=time.time()
     # create loss and put on device
     if hp.input_type == 'raw':
         if hp.distribution == 'beta':
