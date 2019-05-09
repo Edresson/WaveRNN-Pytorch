@@ -37,6 +37,7 @@ def beta_mle_loss(y_hat, y, reduce=True):
     y = (y + 1.0)/2.0
     # note that we will get inf loss if y == 0 or 1.0 exactly, so we will clip it slightly just in case
     y = torch.clamp(y, 1e-5, 0.99999)
+    print(y.max(),y.min())
     # compute logprob
     loss = -dist.log_prob(y).squeeze(-1)
     if reduce:
