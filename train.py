@@ -149,7 +149,6 @@ def train_loop(device, model, data_loader, optimizer, checkpoint_dir):
     """Main training loop.
 
     """
-    start_time=time.time()
     # create loss and put on device
     if hp.input_type == 'raw':
         if hp.distribution == 'beta':
@@ -164,7 +163,7 @@ def train_loop(device, model, data_loader, optimizer, checkpoint_dir):
         raise ValueError("input_type:{} not supported".format(hp.input_type))
 
     
-
+    start_time=time.time()
     global global_step, global_epoch, global_test_step
     while global_epoch < hp.nepochs:
         running_loss = 0
