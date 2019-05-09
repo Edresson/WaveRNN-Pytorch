@@ -32,6 +32,8 @@ from dataset import raw_collate, discrete_collate, AudiobookDataset
 from hparams import hparams as hp
 from lrschedule import noam_learning_rate_decay, step_learning_rate_decay
 
+import sys
+import time
 from tensorboardX import SummaryWriter
 writer = SummaryWriter()
 
@@ -40,6 +42,26 @@ global_epoch = 0
 global_test_step = 0
 use_cuda = torch.cuda.is_available()
 
+def get_expired_time(start_time):
+    '''
+
+    Returns expired time in HH:MM:SS format calculated relative to start_time
+
+    Parameters
+    ----------
+    start_time : int
+        Starting point in time
+
+
+    '''
+    curr_time = time.time()
+    delta = curr_time - start_time
+    hour = int(delta / 3600)
+    delta -= hour * 3600
+    minute = int(delta / 60)
+    delta -= minute * 60
+    seconds = delta
+    return '%02d' % hour + ':%02d' % minute + ':%02d' % seconds
 
 def save_checkpoint(device, model, optimizer, step, checkpoint_dir, epoch):
     checkpoint_path = join(
@@ -127,6 +149,7 @@ def train_loop(device, model, data_loader, optimizer, checkpoint_dir):
     """Main training loop.
 
     """
+    time=time.time()
     # create loss and put on device
     if hp.input_type == 'raw':
         if hp.distribution == 'beta':
@@ -183,6 +206,8 @@ def train_loop(device, model, data_loader, optimizer, checkpoint_dir):
             global_step += 1
         writer.add_scalar('train/loss', running_loss, hp.nepochs)
         print("epoch:{}, running loss:{}, average loss:{}, current lr:{}".format(global_epoch, running_loss, avg_loss, current_lr))
+        print(get_expired_time(start_time))
+        sys.exit()
         global_epoch += 1
 
 
